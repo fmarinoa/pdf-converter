@@ -8,5 +8,8 @@ output_merged.pdf
 # Archivos generados por pyinstaller
 *.spec
 
-.build/
-.dist/
+build/
+dist/
+
+# Carpetas de entorno virtual y archivos de caché de Python
+__pycache__/
