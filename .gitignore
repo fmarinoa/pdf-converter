@@ -4,3 +4,9 @@
 # Archivos generados durante la ejecución
 output_images.pdf
 output_merged.pdf
+
+# Archivos generados por pyinstaller
+*.spec
+
+.build/
+.dist/
