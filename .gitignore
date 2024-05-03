@@ -1,0 +1,6 @@
+# Archivos generados por PyCharm
+.idea/
+
+# Archivos generados durante la ejecución
+output_images.pdf
+output_merged.pdf
