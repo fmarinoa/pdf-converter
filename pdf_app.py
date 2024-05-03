@@ -11,7 +11,18 @@ class ImageToPDFConverterApp:
         self.root.title("Image to PDF Converter")
 
         # Configurar el tamaño inicial de la ventana
-        self.root.geometry("300x100")  # Ajustar dimensiones según se desee
+        self.root.geometry("300x150")  # Ajustar dimensiones según se desee
+
+        # Variable para almacenar la orientación seleccionada
+        self.orientation = tk.StringVar()
+        self.orientation.set("vertical")  # Establecer orientación vertical por defecto
+
+        # Botones de orientación
+        self.vertical_button = tk.Radiobutton(root, text="Vertical", variable=self.orientation, value="vertical")
+        self.vertical_button.grid(row=1, column=1, padx=10, pady=10)
+
+        self.horizontal_button = tk.Radiobutton(root, text="Horizontal", variable=self.orientation, value="horizontal")
+        self.horizontal_button.grid(row=1, column=0, padx=10, pady=10)
 
         # Botón para seleccionar imágenes
         self.select_img_button = tk.Button(root, text="Seleccionar imágenes", command=self.select_images)
@@ -24,11 +35,11 @@ class ImageToPDFConverterApp:
 
         # Botón para seleccionar PDF's
         self.select_pdf_button = tk.Button(root, text="Seleccionar PDF's", command=self.select_pdfs)
-        self.select_pdf_button.grid(row=1, column=0, padx=10, pady=10)
+        self.select_pdf_button.grid(row=2, column=0, padx=10, pady=10)
 
         # Botón para unir PDF's
         self.merge_pdf_button = tk.Button(root, text="Unir PDF's", command=self.merge_pdf, state=tk.DISABLED)
-        self.merge_pdf_button.grid(row=1, column=1, padx=10, pady=10)
+        self.merge_pdf_button.grid(row=2, column=1, padx=10, pady=10)
 
     def select_images(self):
         # Abrir el explorador de archivos para seleccionar imágenes
@@ -44,12 +55,12 @@ class ImageToPDFConverterApp:
             output_pdf = filedialog.asksaveasfilename(defaultextension=".pdf", filetypes=[("PDF", "*.pdf")])
             if output_pdf:
                 try:
-                    converter.convert_images_to_pdf(self.file_paths, output_pdf)
+                    orientation = self.orientation.get()  # Obtener la orientación seleccionada por el usuario
+                    converter.convert_images_to_pdf(self.file_paths, output_pdf, orientation)
                     messagebox.showinfo("Éxito", "Las imágenes se han convertido exitosamente a PDF.")
-                    # Abrir el archivo PDF en el navegador predeterminado
                     os.startfile(output_pdf)
                 except Exception as e:
-                    messagebox.showerror("Error", f"Error al convertir imágenes a PDF: {e}")
+                    messagebox.showerror("Error", f"Error al unir PDF's: {e}")
 
     def select_pdfs(self):
         # Abrir el explorador de archivos para seleccionar PDF's
@@ -71,4 +82,3 @@ class ImageToPDFConverterApp:
                     os.startfile(output_merge_pdf)
                 except Exception as e:
                     messagebox.showerror("Error", f"Error al unir PDF's: {e}")
-                    print(e)

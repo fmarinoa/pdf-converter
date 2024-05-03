@@ -13,3 +13,4 @@ dist/
 
 # Carpetas de entorno virtual y archivos de caché de Python
 __pycache__/
+.venv/
