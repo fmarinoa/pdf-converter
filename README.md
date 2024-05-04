@@ -4,15 +4,16 @@ Este proyecto es una aplicación de escritorio simple que te permite convertir i
 
 ## Features
 
-- Convert PNG and JPG images to PDF files.
-- Merge multiple PDF files into one.
-- Simple and easy-to-use graphical user interface.
+- Convierte archivos PNG, JPG y JPEG a PDF.
+- Une varios archivos de tipo PDF en uno.
+- Permite al usuario seleccionar el orden de los archivos antes de la conversión o la unión.
 
 ## Requirements
 
 - Python 3.x
 - Pillow
 - pypdf
+- reportlab
 
 ## Convertir la aplicación en un ejecutable
 Si deseas compartir tu aplicación con otras personas y permitirles ejecutarla fácilmente en sus máquinas sin necesidad de instalar Python u otras dependencias, puedes convertirla en un ejecutable. Aquí te muestro cómo hacerlo en Windows 10 usando PyInstaller:
